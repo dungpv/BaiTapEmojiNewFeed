@@ -40,4 +40,31 @@ export default styles = StyleSheet.create({
   },
 
   // friend
+  friend__item: {
+    borderRadius: 15,
+    height: 100,
+    marginRight: 10,
+    marginVertical: 10,
+    padding: 10,
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+    backgroundColor: '#d3d3d3',
+  },
+  friend__item__middle: {
+    flex: 3,
+  },
+  friend__item__middle__txt: {
+    fontSize: 14,
+    fontWeight: '600',
+  },
+  friend__item__button: {
+    flex: 1,
+    alignItems: 'center',
+    borderRadius: 20,
+    padding: 5,
+    backgroundColor: '#9370db',
+    fontSize: 14,
+    fontWeight: '500',
+  },
 });

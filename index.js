@@ -9,4 +9,4 @@ import Emoji from './Screens/Emoji/Emoji';
 import NewFeed from './Screens/NewFeed/NewFeed';
 import Zalo from './Screens/Zalo/Zalo';
 
-AppRegistry.registerComponent(appName, () => Emoji);
+AppRegistry.registerComponent(appName, () => NewFeed);

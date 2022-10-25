@@ -1,9 +1,9 @@
-import {View, Text, Image} from 'react-native';
+import {View, Text, Image, FlatList} from 'react-native';
 import React from 'react';
 import styles from './styles';
 
 export default function Friend() {
-  dataSearch = [
+  dataFriends = [
     {
       name: 'Strange',
       image: require('../../assets/Zalo/strange.jpg'),
@@ -30,8 +30,8 @@ export default function Friend() {
       friends: '11 bạn chung',
     },
     {
-      name: 'Yasuo',
-      image: require('../../assets/Zalo/yasuo.jpg'),
+      name: 'Scarlet Witch',
+      image: require('../../assets/Zalo/wanda.jpg'),
       friends: '10 bạn chung',
     },
     {
@@ -51,6 +51,21 @@ export default function Friend() {
     },
   ];
 
+  _renderFriendItem = data => {
+    return (
+      <View style={styles.friend__item}>
+        <Image style={styles.avatar} source={data.item.image}></Image>
+        <View style={styles.friend__item__middle}>
+          <Text style={styles.friend__item__middle__txt}>{data.item.name}</Text>
+          <Text>{data.item.friends}</Text>
+        </View>
+        <View style={styles.friend__item__button}>
+          <Text>Kết bạn</Text>
+        </View>
+      </View>
+    );
+  };
+
   return (
     <View style={styles.search}>
       <View style={styles.search__text}>
@@ -59,38 +74,12 @@ export default function Friend() {
           source={require('../../assets/Zalo/user-account.png')}></Image>
         <Text style={styles.search__text__txt}>Gợi ý kết bạn</Text>
       </View>
-      <View
-        style={{
-          borderRadius: 15,
-          height: 100,
-          marginHorizontal: 10,
-          marginVertical: 10,
-          padding: 10,
-          flexDirection: 'row',
-          justifyContent: 'flex-start',
-          alignItems: 'center',
-          backgroundColor: '#d3d3d3',
-        }}>
-        <Image
-          style={styles.avatar}
-          source={require('../../assets/Zalo/strange.jpg')}></Image>
-        <View style={{flex: 3}}>
-          <Text style={{fontSize: 14, fontWeight: '600'}}>Strange</Text>
-          <Text>15 bạn chung</Text>
-        </View>
-        <View
-          style={{
-            flex: 1,
-            alignItems: 'center',
-            borderRadius: 20,
-            padding: 5,
-            backgroundColor: '#9370db',
-            fontSize: 14,
-            fontWeight: '500',
-          }}>
-          <Text>Kết bạn</Text>
-        </View>
-      </View>
+      <FlatList
+        data={dataFriends}
+        renderItem={data => _renderFriendItem(data)}
+        keyExtractor={data => data.name}
+        showsVerticalScrollIndicator={false}
+        style={{marginTop: 10}}></FlatList>
     </View>
   );
 }
